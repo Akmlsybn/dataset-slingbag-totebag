@@ -1,10 +1,3 @@
-"""
-Klasifikasi Fine-Grained Slingbag vs Totebag
-Menggunakan Multi-Layer Perceptron (MLP) + HOG Features
-VERSI PERBAIKAN: Split DULU → Augmentasi HANYA data latih
-Mencegah Data Leakage
-"""
-
 import os
 import cv2
 import numpy as np
@@ -23,10 +16,10 @@ warnings.filterwarnings('ignore')
 # ─────────────────────────────────────────────
 # KONFIGURASI
 # ─────────────────────────────────────────────
-DATASET_PATH = "Dataset_Preprocessed"  # pakai data ASLI (100 foto)
+DATASET_PATH = "Dataset_Preprocessed"  
 IMG_SIZE     = 256
 RANDOM_STATE = 42
-TEST_SIZE    = 0.3   # 30% untuk uji = 30 foto asli murni
+TEST_SIZE    = 0.3   
 
 random.seed(RANDOM_STATE)
 np.random.seed(RANDOM_STATE)

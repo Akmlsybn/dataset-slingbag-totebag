@@ -1,10 +1,3 @@
-"""
-Augmentasi Dataset Slingbag & Totebag
-Menambah variasi data dari 50 → 100 gambar per kelas
-Teknik: flip, rotasi, brightness, noise (semua OpenCV — ML tradisional)
-Output: folder Dataset_Augmented/
-"""
-
 import os
 import cv2
 import numpy as np
@@ -13,9 +6,9 @@ import random
 # ─────────────────────────────────────────────
 # KONFIGURASI
 # ─────────────────────────────────────────────
-INPUT_PATH  = "Dataset_Preprocessed"   # folder input (sudah resize 256x256)
-OUTPUT_PATH = "Dataset_Augmented"      # folder output augmentasi
-TARGET_PER_CLASS = 100                 # target jumlah gambar per kelas
+INPUT_PATH  = "Dataset_Preprocessed"   
+OUTPUT_PATH = "Dataset_Augmented"      
+TARGET_PER_CLASS = 100                 
 RANDOM_STATE = 42
 random.seed(RANDOM_STATE)
 np.random.seed(RANDOM_STATE)
@@ -182,7 +175,7 @@ def main():
         grand_total += count
     print(f"  {'TOTAL':<15} : {grand_total} gambar")
     print("=" * 55)
-    print(f"\n✅ Dataset augmentasi tersimpan di: '{OUTPUT_PATH}/'")
+    print(f"\nDataset augmentasi tersimpan di: '{OUTPUT_PATH}/'")
     print("   Selanjutnya ubah DATASET_PATH di mlp_klasifikasi.py")
     print(f"   menjadi: DATASET_PATH = \"{OUTPUT_PATH}\"")
 
