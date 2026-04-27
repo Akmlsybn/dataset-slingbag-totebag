@@ -1,10 +1,3 @@
-"""
-Klasifikasi Fine-Grained Slingbag vs Totebag
-Menggunakan HOG + Support Vector Machine (SVM)
-3 Skenario Eksperimen dengan variasi hyperparameter
-ALUR BENAR: Split dulu → Augmentasi hanya data latih (anti data leakage)
-"""
-
 import os
 import cv2
 import numpy as np
@@ -81,7 +74,7 @@ def extract_hog(img):
         pixels_per_cell=(64, 64),
         cells_per_block=(2, 2),
         block_norm='L2-Hys',
-        channel_axis=-1  # <- Ini yang bikin aman 324 dimensi dari RGB
+        channel_axis=-1
     )
 
 # ─────────────────────────────────────────────
@@ -193,7 +186,7 @@ def train_and_evaluate(X_train, X_test, y_train, y_test,
     print(f"  Akurasi Train : {acc_train:.2f}%")
     print(f"  Akurasi Test  : {acc_test:.2f}%")
     print(f"  Gap           : {gap:.2f}%"
-          f"  {'← OK (tidak overfitting)' if gap < 10 else '← Perlu dicek'}")
+          f"  {'' if gap < 10 else '← Perlu dicek'}")
     print(f"  Jumlah Support Vector: {sum(svm.n_support_)}\n")
     print(classification_report(y_test, y_pred,
                                  target_names=classes))
@@ -454,7 +447,7 @@ def main():
     # ── Ringkasan ──
     print_summary(results)
 
-    print("\n✅ Semua hasil tersimpan di folder 'hasil/'")
+    print("\nSemua hasil tersimpan di folder 'hasil/'")
     print("   - confusion_matrix_exp1.png (RBF Baseline)")
     print("   - confusion_matrix_exp2.png (C Besar)")
     print("   - confusion_matrix_exp3.png (Kernel Linear)")
